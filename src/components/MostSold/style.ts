@@ -39,11 +39,11 @@ export const ContentContainer = styled('div', {
 })
 
 export const Content = styled('div', {
-  height: '701px',
+  maxHeight: '701px',
   padding: '30px',
   display: 'flex',
   flexWrap: 'wrap',
-  gap: '12px 31px',
+  gap: '21.36px 31px',
   background: '#F3F5F9',
   borderRadius: '8px',
 })

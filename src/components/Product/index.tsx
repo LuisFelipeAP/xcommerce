@@ -3,7 +3,24 @@ import ProductImage from '../../assets/product.jpg'
 import Image from 'next/image'
 import { HeartIcon } from '@radix-ui/react-icons'
 
-export function Product() {
+interface ProductInterface {
+  name: string,
+  code: string,
+  sales: number,
+  price: number,
+  stock: number
+}
+
+export function Product({
+  name,
+  code,
+  sales,
+  price,
+  stock
+}: ProductInterface) {
+
+  const profit = sales * price
+
   return (
     <ProductContainer>
       <TDContainer>
@@ -55,7 +72,7 @@ export function Product() {
                 color: '#235EE7',
               }}
             >
-              Kit 10 Un. Adesivo 3m Porta Cartão De Silicone Para Celular
+              {name}
             </h3>
             <span
               style={{
@@ -67,7 +84,7 @@ export function Product() {
                 color: '#6B7183',
               }}
             >
-              #MLB2063247364
+              #{code}
             </span>
           </div>
         </div>
@@ -86,7 +103,7 @@ export function Product() {
           verticalAlign: 'middle',
         }}
       >
-        R$ 31,67
+        R$ {price}
       </TDContainer>
       <TDContainer
         style={{
@@ -109,8 +126,8 @@ export function Product() {
             lineHeight: '135%',
           }}
         >
-          <span style={{ fontWeight: 'bold' }}>Total de 4.750</span>
-          <span style={{ fontWeight: 'normal' }}>150 vendas</span>
+          <span style={{ fontWeight: 'bold' }}>Total de R$ {profit}</span>
+          <span style={{ fontWeight: 'normal' }}>{sales}</span>
         </div>
       </TDContainer>
       <TDContainer
@@ -126,7 +143,7 @@ export function Product() {
           verticalAlign: 'middle',
         }}
       >
-        0 und
+        {stock}
       </TDContainer>
       <TDContainer
         css={{

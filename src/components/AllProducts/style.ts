@@ -39,7 +39,7 @@ export const ContentContainer = styled('div', {
 })
 
 export const Content = styled('div', {
-  height: '701px',
+  maxHeight: '701px',
   padding: '30px',
   display: 'flex',
   gap: '31px',
@@ -61,8 +61,6 @@ export const Pagination = styled('div', {
 
 export const ProductsBody = styled('table', {
   width: '100%',
-  fontFamily: '$default',
-  borderSpacing: '0.25rem',
   tableLayout: 'fixed',
 
   'thead th': {
@@ -84,4 +82,18 @@ export const ProductsBody = styled('table', {
     margin: '21px 0 20px',
     display: 'block',
   },
+
+  'tbody tr': {
+    height: '126px'
+  }
+})
+
+export const NothingRegistered = styled('div', {
+  fontFamily: 'Inter',
+  fontStyle: 'normal',
+  fontWeight: '500',
+  fontSize: '16px',
+  lineHeight: '17px',
+  color: '#636363',
+  marginTop: '40px',
 })
