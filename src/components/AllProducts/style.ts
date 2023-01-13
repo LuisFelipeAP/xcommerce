@@ -1,4 +1,5 @@
 import { styled } from '@stitches/react';
+import * as Separator from '@radix-ui/react-separator';
 
 export const Container = styled('div', {
     width: '883px',
@@ -57,4 +58,31 @@ export const Pagination = styled('div', {
     lineHeight: '17px',
     color: '#636363',
     marginTop: '10px',
+})
+
+export const ProductsBody = styled('table', {
+    width: '100%',
+    fontFamily: '$default',
+    borderSpacing: '0.25rem',
+    tableLayout: 'fixed',
+
+    'thead th': {
+        fontFamily: 'Inter',
+        fontStyle: 'normal',
+        fontWeight: '600',
+        fontSize: '14px',
+        lineHeight: '135%',
+        color: '#99A0B0',
+        textTransform: 'uppercase',
+    },
+
+    'tbody tr:before': {
+        content: '.',
+        color: 'transparent',
+        width: '815px',
+        borderTop: '1px solid rgba(0, 0, 0, 0.1);',
+        lineHeight: '0px',
+        margin: '21px 0 20px',
+        display: 'block',
+    },
 })
