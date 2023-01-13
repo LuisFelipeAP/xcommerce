@@ -5,7 +5,7 @@ export const Container = styled('div', {
     backgroundColor: '#17223E',
     display: 'flex',
     justifyContent: 'space-between',
-    borderBottom: '1px solid white',
+    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
 
     'img': {
         alignSelf: 'center',
@@ -14,7 +14,7 @@ export const Container = styled('div', {
 
 export const AvatarLabelGroup = styled('div', {
     display: 'flex',
-    gap: '20px',
+    gap: '15px',
 
     'svg': {
         alignSelf: 'center',
