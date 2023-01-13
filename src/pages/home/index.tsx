@@ -1,3 +1,4 @@
+import { Content } from "../../components/Content";
 import { Header } from "../../components/Header";
 import { ProductsHeader } from "../../components/ProductsHeader";
 import { Container } from "./styles";
@@ -7,6 +8,8 @@ export default function Home() {
         <Container>
             <Header />
             <ProductsHeader />
+
+            <Content />
         </Container>
     )
 }

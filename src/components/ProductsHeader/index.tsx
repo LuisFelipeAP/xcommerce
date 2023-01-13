@@ -11,7 +11,7 @@ export function ProductsHeader() {
                     Produtos
                 </PageLabel>
                 <SearchField htmlFor="searchBar">
-                    <MagnifyingGlassIcon width="18" height="18" />
+                    <MagnifyingGlassIcon width="24" height="24" />
                     <Input type="text" id="searchBar" placeholder="Buscar por produtos" />
                 </SearchField>
             </LabelAndSearchBar>

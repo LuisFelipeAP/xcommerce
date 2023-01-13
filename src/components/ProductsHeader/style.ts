@@ -10,7 +10,7 @@ export const Container = styled('div', {
 })
 
 export const LabelAndSearchBar = styled('div', {
-    padding: '30px 50px',
+    padding: '60px 50px',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',

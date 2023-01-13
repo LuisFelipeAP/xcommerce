@@ -8,8 +8,6 @@ export const globalStyles = globalCss({
     },
     
     body: {
-        backgroundColor: 'black',
-        color: '$gray100',
         '-webkit-font-smoothing': 'antialiased',
     },
 })
