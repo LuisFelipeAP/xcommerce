@@ -1,8 +1,8 @@
-import { styled } from '@stitches/react';
+import { styled } from '@stitches/react'
 
 export const ProductContainer = styled('div', {
-    height: '85px',
-    width: '800px'
+  height: '85px',
+  width: '800px',
 })
 
 export const TDContainer = styled('td', {})

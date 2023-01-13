@@ -1,6 +1,5 @@
-import '../../styles/globals.ts'
+import { globalStyles } from '../../styles/globals.ts'
 import type { AppProps } from 'next/app'
-import { globalStyles } from '../../styles/globals'
 
 globalStyles()
 
