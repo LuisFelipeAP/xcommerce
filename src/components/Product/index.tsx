@@ -122,7 +122,7 @@ export function Product({ name, code, sales, price, stock }: ProductInterface) {
           }}
         >
           <span style={{ fontWeight: 'bold' }}>Total de R$ {profit}</span>
-          <span style={{ fontWeight: 'normal' }}>{sales}</span>
+          <span style={{ fontWeight: 'normal' }}>{sales} vendas</span>
         </div>
       </TDContainer>
       <TDContainer

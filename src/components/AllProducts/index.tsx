@@ -17,10 +17,8 @@ export function AllProducts() {
   useEffect(() => {
     fetch('/api/products')
       .then((response) => response.json())
-      .then((json) => setProducts(json))
+      .then((json) => setProducts(json.products))
   }, [products])
-
-  console.log(products)
 
   return (
     <Container>
@@ -78,9 +76,8 @@ export function AllProducts() {
                 <>
                   {products.map((product) => {
                     return (
-                      <tr>
+                      <tr key={product.code}>
                         <Product
-                          key={product.code}
                           code={product.code}
                           name={product.name}
                           stock={product.stock}
@@ -93,7 +90,7 @@ export function AllProducts() {
                 </>
               ) : (
                 <NothingRegistered>
-                  Nenhum produto encontrado. Crie um novo produto!
+                  Nenhum produto encontrado. Cadastre um novo produto!
                 </NothingRegistered>
               )}
             </tbody>
