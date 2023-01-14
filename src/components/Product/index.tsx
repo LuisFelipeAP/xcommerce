@@ -2,23 +2,17 @@ import { ProductContainer, TDContainer } from './style'
 import ProductImage from '../../assets/product.jpg'
 import Image from 'next/image'
 import { HeartIcon } from '@radix-ui/react-icons'
+import { useEffect, useState } from 'react'
 
 interface ProductInterface {
-  name: string,
-  code: string,
-  sales: number,
-  price: number,
+  name: string
+  code: string
+  sales: number
+  price: number
   stock: number
 }
 
-export function Product({
-  name,
-  code,
-  sales,
-  price,
-  stock
-}: ProductInterface) {
-
+export function Product({ name, code, sales, price, stock }: ProductInterface) {
   const profit = sales * price
 
   return (
@@ -70,6 +64,7 @@ export function Product({
                 fontSize: '14px',
                 lineHeight: '135%',
                 color: '#235EE7',
+                wordBreak: 'break-word',
               }}
             >
               {name}

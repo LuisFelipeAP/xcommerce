@@ -84,8 +84,8 @@ export const ProductsBody = styled('table', {
   },
 
   'tbody tr': {
-    height: '126px'
-  }
+    height: '126px',
+  },
 })
 
 export const NothingRegistered = styled('div', {

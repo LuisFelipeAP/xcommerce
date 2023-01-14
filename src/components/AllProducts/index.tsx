@@ -1,5 +1,5 @@
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Product } from '../Product'
 import {
   Container,
@@ -12,47 +12,15 @@ import {
 } from './style'
 
 export function AllProducts() {
-  // const [products, setProducts] = useState({})
+  const [products, setProducts] = useState([])
 
-  const products = [
-    
-    {
-      "name": "Iphone 14",
-      "code": "MLB123456",
-      "sales": 30,
-      "price": 8000,
-      "stock": 3,
-    },
-    {
-      "name": "Iphone 14",
-      "code": "MLB123456",
-      "sales": 30,
-      "price": 8000,
-      "stock": 3,
-    },
-    {
-      "name": "Iphone 14",
-      "code": "MLB123456",
-      "sales": 30,
-      "price": 8000,
-      "stock": 3,
-    },
-    
-    {
-      "name": "Iphone 14",
-      "code": "MLB123456",
-      "sales": 30,
-      "price": 8000,
-      "stock": 3,
-    },
-    {
-      "name": "Iphone 14",
-      "code": "MLB123456",
-      "sales": 30,
-      "price": 8000,
-      "stock": 3,
-    },
-  ]
+  useEffect(() => {
+    fetch('/api/products')
+      .then((response) => response.json())
+      .then((json) => setProducts(json))
+  }, [products])
+
+  console.log(products)
 
   return (
     <Container>
@@ -106,13 +74,9 @@ export function AllProducts() {
             </thead>
 
             <tbody>
-              {!products ? (
-                <NothingRegistered>
-                  Nenhum produto encontrado. Crie um novo produto!
-                </NothingRegistered>
-              ) : (
+              {products.length > 0 ? (
                 <>
-                  {products.map(product => {
+                  {products.map((product) => {
                     return (
                       <tr>
                         <Product
@@ -127,6 +91,10 @@ export function AllProducts() {
                     )
                   })}
                 </>
+              ) : (
+                <NothingRegistered>
+                  Nenhum produto encontrado. Crie um novo produto!
+                </NothingRegistered>
               )}
             </tbody>
           </ProductsBody>

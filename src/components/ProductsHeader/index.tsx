@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Button,
   Container,
@@ -11,6 +11,7 @@ import {
   SeparatorRoot,
 } from './style'
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
+import { Modal } from '../Modal'
 
 export function ProductsHeader() {
   return (
@@ -37,7 +38,7 @@ export function ProductsHeader() {
           </Button>
         </MainNav>
 
-        <Button>Criar novo</Button>
+        <Modal />
       </NavContainer>
     </Container>
   )
