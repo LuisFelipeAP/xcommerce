@@ -2,7 +2,6 @@ import { ProductContainer, TDContainer } from './style'
 import ProductImage from '../../assets/product.jpg'
 import Image from 'next/image'
 import { HeartIcon } from '@radix-ui/react-icons'
-import { useEffect, useState } from 'react'
 
 interface ProductInterface {
   name: string
