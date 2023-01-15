@@ -82,7 +82,7 @@ export function Modal() {
       method: 'POST',
       body: JSON.stringify({
         name: newProductName,
-        code: cuid(),
+        code: cuid.slug(),
         price: newProductPrice,
         sales: newProductSales,
         stock: newProductStock,

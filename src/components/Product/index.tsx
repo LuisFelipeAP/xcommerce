@@ -125,8 +125,20 @@ export function Product({ name, code, sales, price, stock }: ProductInterface) {
             lineHeight: '135%',
           }}
         >
-          <span style={{ fontWeight: 'bold' }}>Total de {formatter.format(profit)}</span>
-          <span style={{ fontWeight: 'normal' }}>{sales < 2 ? `${sales} venda` : `${sales} vendas`}</span>
+          <span style={{ fontWeight: 'bold' }}>
+            {
+              profit > 99999 
+              ? `Total de \n${formatter.format(profit)}`
+              : `Total de ${formatter.format(profit)}`
+            }
+          </span>
+          <span style={{ fontWeight: 'normal' }}>
+            {
+              sales < 2 
+              ? `${sales} venda` 
+              : `${sales} vendas`
+            }
+          </span>
         </div>
       </TDContainer>
       <TDContainer

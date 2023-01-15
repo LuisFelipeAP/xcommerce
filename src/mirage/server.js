@@ -9,31 +9,52 @@ export function makeServer() {
 
     seeds(server) {
       server.schema.products.create({
-        name: 'IPhone',
-        price: 2,
-        stock: 2,
-        code: cuid(),
-        sales: 4,
+        name: 'Iphone 14',
+        price: 8000,
+        stock: 3,
+        code: 'MLB123456',
+        sales: 30,
       })
       server.schema.products.create({
-        name: 'IPhone',
+        name: 'Oneplus',
         price: 2,
         stock: 2,
-        code: cuid(),
+        code: cuid.slug(),
         sales: 4,
       })
       server.schema.products.create({
         name: 'Xiaomi',
         price: 2,
         stock: 2,
-        code: cuid(),
+        code: cuid.slug(),
         sales: 4,
       })
       server.schema.products.create({
-        name: 'Samsumg',
+        name: 'Samsung',
         price: 2,
         stock: 2,
-        code: cuid(),
+        code: cuid.slug(),
+        sales: 4,
+      })
+      server.schema.products.create({
+        name: 'Motorola',
+        price: 2,
+        stock: 2,
+        code: cuid.slug(),
+        sales: 4,
+      })
+      server.schema.products.create({
+        name: 'LG',
+        price: 2,
+        stock: 2,
+        code: cuid.slug(),
+        sales: 4,
+      })
+      server.schema.products.create({
+        name: 'Nokia',
+        price: 2,
+        stock: 2,
+        code: cuid.slug(),
         sales: 4,
       })
     },
