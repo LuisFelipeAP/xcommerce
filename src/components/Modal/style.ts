@@ -85,6 +85,7 @@ export const Fieldset = styled('fieldset', {
 
   borderRadius: '8px',
   backgroundColor: 'white',
+  flexWrap: 'wrap',
 })
 
 export const Label = styled('label', {
@@ -107,4 +108,22 @@ export const Input = styled('input', {
   fontSize: 15,
   lineHeight: 1,
   height: 35,
+
+  '&::-webkit-outer-spin-button': {
+    appearance: 'none',
+    margin: '0',
+  },
+
+  '&::-webkit-inner-spin-button': {
+    appearance: 'none',
+    margin: '0',
+  }
+})
+
+export const FormError = styled('p', {
+  color: '#f75a68',
+  fontSize: '14px',
+  marginLeft: '80px',
+  marginTop: '-5px',
+  flexBasis: '100%',
 })

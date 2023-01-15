@@ -14,6 +14,11 @@ interface ProductInterface {
 export function Product({ name, code, sales, price, stock }: ProductInterface) {
   const profit = sales * price
 
+  const formatter = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  });
+
   return (
     <ProductContainer>
       <TDContainer>
@@ -97,7 +102,7 @@ export function Product({ name, code, sales, price, stock }: ProductInterface) {
           verticalAlign: 'middle',
         }}
       >
-        R$ {price}
+        {formatter.format(price)}
       </TDContainer>
       <TDContainer
         style={{
@@ -120,8 +125,8 @@ export function Product({ name, code, sales, price, stock }: ProductInterface) {
             lineHeight: '135%',
           }}
         >
-          <span style={{ fontWeight: 'bold' }}>Total de R$ {profit}</span>
-          <span style={{ fontWeight: 'normal' }}>{sales} vendas</span>
+          <span style={{ fontWeight: 'bold' }}>Total de {formatter.format(profit)}</span>
+          <span style={{ fontWeight: 'normal' }}>{sales < 2 ? `${sales} venda` : `${sales} vendas`}</span>
         </div>
       </TDContainer>
       <TDContainer
@@ -137,7 +142,7 @@ export function Product({ name, code, sales, price, stock }: ProductInterface) {
           verticalAlign: 'middle',
         }}
       >
-        {stock}
+        {stock} und.
       </TDContainer>
       <TDContainer
         css={{
