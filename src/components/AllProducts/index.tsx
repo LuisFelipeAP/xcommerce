@@ -1,5 +1,6 @@
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { SearchContext } from '../../context/searchContext';
 import { Product } from '../Product'
 import {
   Container,
@@ -12,23 +13,84 @@ import {
 } from './style'
 
 export function AllProducts() {
+  const { searchTerm, filteredList, setFilteredList } = useContext(SearchContext);
+
   const [products, setProducts] = useState([])
 
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage, setPostsPerPage] = useState(5)
 
-  const maxPages = Math.ceil( products.length / postsPerPage );
+  const maxPages = Math.ceil(products.length / postsPerPage);
 
   const lastPostIndex = currentPage * postsPerPage
   const firstPostIndex = lastPostIndex - postsPerPage
 
   const currentPosts = products.slice(firstPostIndex, lastPostIndex)
 
+  const filteredPosts = filteredList.slice(firstPostIndex, lastPostIndex)
+
   useEffect(() => {
     fetch('/api/products')
       .then((response) => response.json())
       .then((json) => setProducts(json.products))
   }, [products])
+
+  useEffect(() => {
+    setFilteredList(
+      products.filter(item => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
+  }, [searchTerm, setFilteredList]);
+
+  function RenderProduct() {
+    return (
+      <>
+        {
+          filteredList
+            ? (
+              <>
+                {filteredPosts.map(product => (
+                  <>
+                    <tr key={product.code}>
+                      <Product
+                        code={product.code}
+                        name={product.name}
+                        stock={product.stock}
+                        price={product.price}
+                        sales={product.sales}
+                      />
+                    </tr>
+                  </>
+                ))}
+              </>
+            )
+            : (
+              <>
+                {currentPosts.map(product => (
+                  <>
+                    <tr key={product.code}>
+                      <Product
+                        code={product.code}
+                        name={product.name}
+                        stock={product.stock}
+                        price={product.price}
+                        sales={product.sales}
+                      />
+                    </tr>
+                  </>
+                ))}
+              </>
+            )
+        }
+        {
+          filteredList.length > 0 || 
+          currentPosts.length > 0 && 
+          <NothingRegistered>
+            Nenhum produto encontrado. Cadastre um novo produto!
+          </NothingRegistered>
+        }
+      </>
+    )
+  }
 
   return (
     <Container>
@@ -82,27 +144,7 @@ export function AllProducts() {
             </thead>
 
             <tbody>
-              {products.length > 0 ? (
-                <>
-                  {currentPosts.map((product) => {
-                    return (
-                      <tr key={product.code}>
-                        <Product
-                          code={product.code}
-                          name={product.name}
-                          stock={product.stock}
-                          price={product.price}
-                          sales={product.sales}
-                        />
-                      </tr>
-                    )
-                  })}
-                </>
-              ) : (
-                <NothingRegistered>
-                  Nenhum produto encontrado. Cadastre um novo produto!
-                </NothingRegistered>
-              )}
+              <RenderProduct />
             </tbody>
           </ProductsBody>
         </Content>

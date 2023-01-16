@@ -16,6 +16,13 @@ export function makeServer() {
         sales: 30,
       })
       server.schema.products.create({
+        name: 'Kit 10 Un. Adesivo 3m Porta Cartão De Silicone Para Celular',
+        price: 31.67,
+        stock: 0,
+        code: cuid.slug(),
+        sales: 150,
+      })
+      server.schema.products.create({
         name: 'Oneplus',
         price: 2,
         stock: 2,

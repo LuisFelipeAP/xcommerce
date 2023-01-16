@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
   Button,
   Container,
@@ -10,17 +10,40 @@ import {
   SearchField,
   SeparatorRoot,
 } from './style'
-import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
+import { CrossCircledIcon, MagnifyingGlassIcon } from '@radix-ui/react-icons'
 import { Modal } from '../Modal'
+import { SearchContext } from '../../context/searchContext'
 
 export function ProductsHeader() {
+  const { searchTerm, setSearchTerm } = useContext(SearchContext);
+
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
   return (
     <Container>
       <LabelAndSearchBar>
         <PageLabel>Produtos</PageLabel>
         <SearchField htmlFor="searchBar">
           <MagnifyingGlassIcon width="24" height="24" />
-          <Input type="text" id="searchBar" placeholder="Buscar por produtos" />
+          <Input
+            value={searchTerm}
+            type="text"
+            id="searchBar"
+            placeholder="Buscar por produtos"
+            onChange={handleSearch}
+          />
+          {searchTerm &&
+            <CrossCircledIcon
+              width={24}
+              height={24}
+              style={{ marginLeft: 'auto', color: '#f75a68' }}
+              onClick={() => {
+                setSearchTerm("")
+              }}
+            />
+          }
         </SearchField>
       </LabelAndSearchBar>
 
