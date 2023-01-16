@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Cross2Icon } from '@radix-ui/react-icons'
 import {
@@ -17,37 +17,43 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import cuid from 'cuid'
-import { Close } from '@radix-ui/react-popover'
 
 const registerProductSchema = z.object({
   name: z
     .string()
-    .min(5, { message: "O nome do produto precisa ter pelo menos 5 letras" })
-    .max(89, { message: "O nome do produto não pode ter mais do que 90 characteres." })
-    .regex(/^([A-Z\a-z\À-ÿ\1-9\.\ \-\:]+)$/gm, { message: "O nome do produto não pode conter characteres especiais"}),
-  
+    .min(5, { message: 'O nome do produto precisa ter pelo menos 5 letras' })
+    .max(89, {
+      message: 'O nome do produto não pode ter mais do que 90 characteres.',
+    })
+    .regex(/^([A-Za-zÀ-ÿ1-9. \-:]+)$/gm, {
+      message: 'O nome do produto não pode conter characteres especiais',
+    }),
+
   price: z
     .number({
-      required_error: "Registrar um valor é obrigatório",
-      invalid_type_error: "Insira um valor para o produto",
+      required_error: 'Registrar um valor é obrigatório',
+      invalid_type_error: 'Insira um valor para o produto',
     })
-    .nonnegative({ message: "O valor precisa ser positivo"}),
-  
+    .nonnegative({ message: 'O valor precisa ser positivo' }),
+
   sales: z
     .number({
-      required_error: "Registrar uma venda é obrigatório",
-      invalid_type_error: "Insira uma quantidade de venda do produto",
+      required_error: 'Registrar uma venda é obrigatório',
+      invalid_type_error: 'Insira uma quantidade de venda do produto',
     })
-    .nonnegative({ message: "O valor precisa ser positivo"})
-    .int({ message: "A quantidade de vendas precisa ser um número inteiro"}),
-  
+    .nonnegative({ message: 'O valor precisa ser positivo' })
+    .int({ message: 'A quantidade de vendas precisa ser um número inteiro' }),
+
   stock: z
     .number({
-      required_error: "Registrar um estoque é obrigatório",
-      invalid_type_error: "Insira uma quantidade de estoque do produto",
+      required_error: 'Registrar um estoque é obrigatório',
+      invalid_type_error: 'Insira uma quantidade de estoque do produto',
     })
-    .nonnegative({ message: "O valor precisa ser positivo"})
-    .int({ message: "A quantidade de estoque do produto precisa ser um número inteiro"}),
+    .nonnegative({ message: 'O valor precisa ser positivo' })
+    .int({
+      message:
+        'A quantidade de estoque do produto precisa ser um número inteiro',
+    }),
 })
 
 type RegisterProductData = z.infer<typeof registerProductSchema>
@@ -75,7 +81,7 @@ export function Modal() {
   const [newProductStock, setNewProductStock] =
     useState<registerNewProductStock>()
 
-  const [products, setProducts] = useState({})
+  const [setProducts] = useState({})
 
   async function createProduct() {
     await fetch('/api/products', {
@@ -115,58 +121,53 @@ export function Modal() {
               onChange={(event) => setNewProductName(event.target.value)}
               maxLength={90}
             />
-            {errors.name && (
-              <FormError>{errors.name?.message}</FormError>
-            )}
+            {errors.name && <FormError>{errors.name?.message}</FormError>}
           </Fieldset>
           <Fieldset>
             <Label htmlFor="price">Valor</Label>
             <Input
               id="price"
               type="number"
-              {...register('price', {valueAsNumber: true})}
+              {...register('price', { valueAsNumber: true })}
               placeholder="Valor do produto"
               required
               value={newProductPrice}
               onChange={(event) => setNewProductPrice(event.target.value)}
             />
-            {errors.price && (
-              <FormError>{errors.price?.message}</FormError>
-            )}
+            {errors.price && <FormError>{errors.price?.message}</FormError>}
           </Fieldset>
           <Fieldset>
             <Label htmlFor="sales">Vendas</Label>
             <Input
               id="sales"
               type="number"
-              {...register('sales', {valueAsNumber: true})}
+              {...register('sales', { valueAsNumber: true })}
               placeholder="Quantidade de vendas do produto"
               required
               value={newProductSales}
               onChange={(event) => setNewProductSales(event.target.value)}
             />
-            {errors.sales && (
-              <FormError>{errors.sales?.message}</FormError>
-            )}
+            {errors.sales && <FormError>{errors.sales?.message}</FormError>}
           </Fieldset>
           <Fieldset>
             <Label htmlFor="stock">Estoque</Label>
             <Input
               id="stock"
               type="number"
-              {...register('stock', {valueAsNumber: true})}
+              {...register('stock', { valueAsNumber: true })}
               placeholder="Quantidade de produtos em estoque"
               required
               value={newProductStock}
               onChange={(event) => setNewProductStock(event.target.value)}
             />
-            {errors.stock && (
-              <FormError>{errors.stock?.message}</FormError>
-            )}
+            {errors.stock && <FormError>{errors.stock?.message}</FormError>}
           </Fieldset>
           <Flex css={{ marginTop: 25, justifyContent: 'flex-end' }}>
             <Dialog.Close asChild>
-              <Button onClick={handleSubmit(createProduct)} disabled={isSubmitting}>
+              <Button
+                onClick={handleSubmit(createProduct)}
+                disabled={isSubmitting}
+              >
                 Criar produto
               </Button>
             </Dialog.Close>

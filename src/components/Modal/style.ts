@@ -117,7 +117,7 @@ export const Input = styled('input', {
   '&::-webkit-inner-spin-button': {
     appearance: 'none',
     margin: '0',
-  }
+  },
 })
 
 export const FormError = styled('p', {

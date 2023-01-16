@@ -1,21 +1,21 @@
-import { createContext, useState } from 'react'
+import React, { createContext, useState } from 'react'
 
 export interface SearchContextInterface {
-  searchTerm: string;
-  filteredList: any[];
-  setSearchTerm: (searchTerm: string) => void;
-  setFilteredList: React.Dispatch<React.SetStateAction<any[]>>;
+  searchTerm: string
+  filteredList: any[]
+  setSearchTerm: (searchTerm: string) => void
+  setFilteredList: React.Dispatch<React.SetStateAction<any[]>>
 }
 
 export const SearchContext = createContext<SearchContextInterface>({
-  searchTerm: "",
+  searchTerm: '',
   filteredList: [],
   setSearchTerm: () => {},
-  setFilteredList: () => {}
+  setFilteredList: () => {},
 })
 
 export const SearchContextProvider = ({ children }: any) => {
-  const [searchTerm, setSearchTerm] = useState("")
+  const [searchTerm, setSearchTerm] = useState('')
   const [filteredList, setFilteredList] = useState([])
 
   return (
@@ -24,7 +24,7 @@ export const SearchContextProvider = ({ children }: any) => {
         searchTerm,
         filteredList,
         setSearchTerm,
-        setFilteredList
+        setFilteredList,
       }}
     >
       {children}

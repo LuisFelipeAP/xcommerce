@@ -5,7 +5,7 @@ import { MostSold } from '../MostSold'
 import { Container } from './style'
 
 export function Content() {
-  const [isFavorite, setIsFavorite] = useState(false)
+  const [isFavorite] = useState(false)
 
   return (
     <Container>
