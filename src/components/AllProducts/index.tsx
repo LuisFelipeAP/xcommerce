@@ -1,7 +1,8 @@
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import { useContext, useEffect, useState } from 'react'
+import { ProductInterface, ProductsContext } from '../../context/productContext'
 import { SearchContext } from '../../context/searchContext'
-import { Product } from '../Product'
+import { ProductComponent } from '../Product'
 import {
   Container,
   Content,
@@ -16,7 +17,7 @@ export function AllProducts() {
   const { searchTerm, filteredList, setFilteredList } =
     useContext(SearchContext)
 
-  const [products, setProducts] = useState([])
+  const { products, setProducts } = useContext(ProductsContext);
 
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage] = useState(5)
@@ -30,27 +31,33 @@ export function AllProducts() {
 
   const filteredPosts = filteredList.slice(firstPostIndex, lastPostIndex)
 
+  const handleSearch = (searchTerm: string) => {
+    setFilteredList(
+      products.filter((product: ProductInterface) =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase()),
+      ),
+    );
+  }
+
+  useEffect(() => {
+    handleSearch(searchTerm);
+  }, [products, searchTerm])
+
   useEffect(() => {
     fetch('/api/products')
       .then((response) => response.json())
       .then((json) => setProducts(json.products))
-
-    setFilteredList(
-      products.filter((product) =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase()),
-      ),
-    )
-  }, [searchTerm, setFilteredList, products])
+  }, [products])
 
   function RenderProduct() {
     return (
       <>
         {filteredList ? (
           <>
-            {filteredPosts.map((product) => (
+            {filteredPosts.map((product: ProductInterface) => (
               <>
                 <tr key={product.code}>
-                  <Product
+                  <ProductComponent
                     code={product.code}
                     name={product.name}
                     stock={product.stock}
@@ -64,16 +71,10 @@ export function AllProducts() {
         ) : (
           <>
             {currentPosts.map(
-              (product: {
-                code: string
-                name: string
-                stock: number
-                price: number
-                sales: number
-              }) => (
+              (product: ProductInterface) => (
                 <>
                   <tr key={product.code}>
-                    <Product
+                    <ProductComponent
                       code={product.code}
                       name={product.name}
                       stock={product.stock}

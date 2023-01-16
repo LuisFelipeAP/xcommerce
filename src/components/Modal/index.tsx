@@ -81,7 +81,7 @@ export function Modal() {
   const [newProductStock, setNewProductStock] =
     useState<registerNewProductStock>()
 
-  const [setProducts] = useState({})
+  const [products, setProducts] = useState({})
 
   async function createProduct() {
     await fetch('/api/products', {
@@ -132,7 +132,7 @@ export function Modal() {
               placeholder="Valor do produto"
               required
               value={newProductPrice}
-              onChange={(event) => setNewProductPrice(event.target.value)}
+              onChange={(event) => setNewProductPrice(event.target.valueAsNumber)}
             />
             {errors.price && <FormError>{errors.price?.message}</FormError>}
           </Fieldset>
@@ -145,7 +145,7 @@ export function Modal() {
               placeholder="Quantidade de vendas do produto"
               required
               value={newProductSales}
-              onChange={(event) => setNewProductSales(event.target.value)}
+              onChange={(event) => setNewProductSales(event.target.valueAsNumber)}
             />
             {errors.sales && <FormError>{errors.sales?.message}</FormError>}
           </Fieldset>
@@ -158,7 +158,7 @@ export function Modal() {
               placeholder="Quantidade de produtos em estoque"
               required
               value={newProductStock}
-              onChange={(event) => setNewProductStock(event.target.value)}
+              onChange={(event) => setNewProductStock(event.target.valueAsNumber)}
             />
             {errors.stock && <FormError>{errors.stock?.message}</FormError>}
           </Fieldset>

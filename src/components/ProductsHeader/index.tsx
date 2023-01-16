@@ -20,7 +20,7 @@ export function ProductsHeader() {
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value)
   }
-
+  
   return (
     <Container>
       <LabelAndSearchBar>

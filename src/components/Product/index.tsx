@@ -1,17 +1,12 @@
 import { ProductContainer, TDContainer } from './style'
 import ProductImage from '../../assets/product.jpg'
 import Image from 'next/image'
-import { HeartIcon } from '@radix-ui/react-icons'
+import { useContext } from 'react'
+import { ProductInterface, ProductsContext } from '../../context/productContext'
+import { EmptyHeartIcon } from '../EmptyHeartIcon'
+import { FilledHeartIcon } from '../FilledHeartIcon'
 
-interface ProductInterface {
-  name: string
-  code: string
-  sales: number
-  price: number
-  stock: number
-}
-
-export function Product({ name, code, sales, price, stock }: ProductInterface) {
+export function ProductComponent({ name, code, sales, price, stock }: ProductInterface) {
   const profit = sales * price
 
   const formatter = new Intl.NumberFormat('pt-BR', {
@@ -19,6 +14,17 @@ export function Product({ name, code, sales, price, stock }: ProductInterface) {
     currency: 'BRL',
   })
 
+  const { favorites, setFavorites } = useContext(ProductsContext);
+  const isFavorite = favorites.includes(code);
+
+  function handleToggleFavorite() {
+    if (isFavorite) {
+      setFavorites(favorites.filter((favoriteCode) => favoriteCode !== code));
+    } else {
+      setFavorites([...favorites, code]);
+    }
+  }
+  
   return (
     <ProductContainer>
       <TDContainer>
@@ -157,14 +163,9 @@ export function Product({ name, code, sales, price, stock }: ProductInterface) {
           width: '80px',
         }}
       >
-        <HeartIcon
-          width="24px"
-          height="24px"
-          style={{
-            color: '#101828',
-            cursor: 'pointer',
-          }}
-        />
+        {isFavorite
+        ? (<FilledHeartIcon onClick={handleToggleFavorite} width={24} height={24} />)
+        : (<EmptyHeartIcon onClick={handleToggleFavorite} width={24} height={24} />)}
       </TDContainer>
     </ProductContainer>
   )
