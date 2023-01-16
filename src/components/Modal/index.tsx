@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Cross2Icon } from '@radix-ui/react-icons'
 import {
@@ -17,6 +17,7 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import cuid from 'cuid'
+import { ProductsContext } from '../../context/productContext'
 
 const registerProductSchema = z.object({
   name: z
@@ -81,7 +82,7 @@ export function Modal() {
   const [newProductStock, setNewProductStock] =
     useState<registerNewProductStock>()
 
-  const [products, setProducts] = useState({})
+  const { setProducts } = useContext(ProductsContext)
 
   async function createProduct() {
     await fetch('/api/products', {
@@ -132,7 +133,9 @@ export function Modal() {
               placeholder="Valor do produto"
               required
               value={newProductPrice}
-              onChange={(event) => setNewProductPrice(event.target.valueAsNumber)}
+              onChange={(event) =>
+                setNewProductPrice(event.target.valueAsNumber)
+              }
             />
             {errors.price && <FormError>{errors.price?.message}</FormError>}
           </Fieldset>
@@ -145,7 +148,9 @@ export function Modal() {
               placeholder="Quantidade de vendas do produto"
               required
               value={newProductSales}
-              onChange={(event) => setNewProductSales(event.target.valueAsNumber)}
+              onChange={(event) =>
+                setNewProductSales(event.target.valueAsNumber)
+              }
             />
             {errors.sales && <FormError>{errors.sales?.message}</FormError>}
           </Fieldset>
@@ -158,7 +163,9 @@ export function Modal() {
               placeholder="Quantidade de produtos em estoque"
               required
               value={newProductStock}
-              onChange={(event) => setNewProductStock(event.target.valueAsNumber)}
+              onChange={(event) =>
+                setNewProductStock(event.target.valueAsNumber)
+              }
             />
             {errors.stock && <FormError>{errors.stock?.message}</FormError>}
           </Fieldset>

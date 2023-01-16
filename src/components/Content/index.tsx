@@ -1,5 +1,4 @@
-import { useContext, useState } from 'react'
-import { ProductsContext } from '../../context/productContext'
+import { useState } from 'react'
 import { AllProducts } from '../AllProducts'
 import { FavoritesProducts } from '../FavoritesProducts'
 import { MostSold } from '../MostSold'

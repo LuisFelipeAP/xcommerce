@@ -6,7 +6,13 @@ import { ProductInterface, ProductsContext } from '../../context/productContext'
 import { EmptyHeartIcon } from '../EmptyHeartIcon'
 import { FilledHeartIcon } from '../FilledHeartIcon'
 
-export function ProductComponent({ name, code, sales, price, stock }: ProductInterface) {
+export function ProductComponent({
+  name,
+  code,
+  sales,
+  price,
+  stock,
+}: ProductInterface) {
   const profit = sales * price
 
   const formatter = new Intl.NumberFormat('pt-BR', {
@@ -14,17 +20,17 @@ export function ProductComponent({ name, code, sales, price, stock }: ProductInt
     currency: 'BRL',
   })
 
-  const { favorites, setFavorites } = useContext(ProductsContext);
-  const isFavorite = favorites.includes(code);
+  const { favorites, setFavorites } = useContext(ProductsContext)
+  const isFavorite = favorites.includes(code)
 
   function handleToggleFavorite() {
     if (isFavorite) {
-      setFavorites(favorites.filter((favoriteCode) => favoriteCode !== code));
+      setFavorites(favorites.filter((favoriteCode) => favoriteCode !== code))
     } else {
-      setFavorites([...favorites, code]);
+      setFavorites([...favorites, code])
     }
   }
-  
+
   return (
     <ProductContainer>
       <TDContainer>
@@ -163,9 +169,19 @@ export function ProductComponent({ name, code, sales, price, stock }: ProductInt
           width: '80px',
         }}
       >
-        {isFavorite
-        ? (<FilledHeartIcon onClick={handleToggleFavorite} width={24} height={24} />)
-        : (<EmptyHeartIcon onClick={handleToggleFavorite} width={24} height={24} />)}
+        {isFavorite ? (
+          <FilledHeartIcon
+            onClick={handleToggleFavorite}
+            width={24}
+            height={24}
+          />
+        ) : (
+          <EmptyHeartIcon
+            onClick={handleToggleFavorite}
+            width={24}
+            height={24}
+          />
+        )}
       </TDContainer>
     </ProductContainer>
   )

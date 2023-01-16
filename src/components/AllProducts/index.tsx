@@ -17,7 +17,7 @@ export function AllProducts() {
   const { searchTerm, filteredList, setFilteredList } =
     useContext(SearchContext)
 
-  const { products, setProducts } = useContext(ProductsContext);
+  const { products, setProducts } = useContext(ProductsContext)
 
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage] = useState(5)
@@ -36,11 +36,11 @@ export function AllProducts() {
       products.filter((product: ProductInterface) =>
         product.name.toLowerCase().includes(searchTerm.toLowerCase()),
       ),
-    );
+    )
   }
 
   useEffect(() => {
-    handleSearch(searchTerm);
+    handleSearch(searchTerm)
   }, [products, searchTerm])
 
   useEffect(() => {
@@ -70,21 +70,19 @@ export function AllProducts() {
           </>
         ) : (
           <>
-            {currentPosts.map(
-              (product: ProductInterface) => (
-                <>
-                  <tr key={product.code}>
-                    <ProductComponent
-                      code={product.code}
-                      name={product.name}
-                      stock={product.stock}
-                      price={product.price}
-                      sales={product.sales}
-                    />
-                  </tr>
-                </>
-              ),
-            )}
+            {currentPosts.map((product: ProductInterface) => (
+              <>
+                <tr key={product.code}>
+                  <ProductComponent
+                    code={product.code}
+                    name={product.name}
+                    stock={product.stock}
+                    price={product.price}
+                    sales={product.sales}
+                  />
+                </tr>
+              </>
+            ))}
           </>
         )}
         {filteredList.length > 0 ||
