@@ -13,8 +13,10 @@ import {
 import { CrossCircledIcon, MagnifyingGlassIcon } from '@radix-ui/react-icons'
 import { Modal } from '../Modal'
 import { SearchContext } from '../../context/searchContext'
+import { ProductsContext } from '../../context/productContext'
 
 export function ProductsHeader() {
+  const { setShowFavorites } = useContext(ProductsContext)
   const { searchTerm, setSearchTerm } = useContext(SearchContext)
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,8 +57,10 @@ export function ProductsHeader() {
 
       <NavContainer>
         <MainNav>
-          <Button>Todas</Button>
-          <Button css={{ backgroundColor: 'rgba(211, 40, 17, 0.5)' }}>
+          <Button type='button' onClick={() => setShowFavorites(false)}>
+            Todas
+          </Button>
+          <Button type='button' onClick={() => setShowFavorites(true)}>
             Favoritos
           </Button>
         </MainNav>

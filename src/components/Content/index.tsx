@@ -1,16 +1,17 @@
-import { useState } from 'react'
+import { useContext } from 'react'
+import { ProductsContext } from '../../context/productContext'
 import { AllProducts } from '../AllProducts'
 import { FavoritesProducts } from '../FavoritesProducts'
 import { MostSold } from '../MostSold'
 import { Container } from './style'
 
 export function Content() {
-  const [isFavorite] = useState(false)
+  const { showFavorites } = useContext(ProductsContext)
 
   return (
     <Container>
       <MostSold />
-      {isFavorite ? <FavoritesProducts /> : <AllProducts />}
+      {showFavorites ? <FavoritesProducts /> : <AllProducts />}
     </Container>
   )
 }

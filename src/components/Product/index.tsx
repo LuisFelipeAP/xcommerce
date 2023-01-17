@@ -22,12 +22,14 @@ export function ProductComponent({
 
   const { favorites, setFavorites } = useContext(ProductsContext)
   const isFavorite = favorites.includes(code)
+  const favoriteProduct = favorites.find((product) => product.code === code);
 
   function handleToggleFavorite() {
-    if (isFavorite) {
-      setFavorites(favorites.filter((favoriteCode) => favoriteCode !== code))
+
+    if (favoriteProduct) {
+      setFavorites(favorites.filter((product) => product !== favoriteProduct));
     } else {
-      setFavorites([...favorites, code])
+      setFavorites([...favorites, { name, code, sales, price, stock }]);
     }
   }
 
@@ -169,7 +171,7 @@ export function ProductComponent({
           width: '80px',
         }}
       >
-        {isFavorite ? (
+        {favoriteProduct ? (
           <FilledHeartIcon
             onClick={handleToggleFavorite}
             width={24}

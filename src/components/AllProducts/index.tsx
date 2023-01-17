@@ -1,3 +1,4 @@
+import { violetA } from '@radix-ui/colors/types/dark/violetA'
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import { useContext, useEffect, useState } from 'react'
 import { ProductInterface, ProductsContext } from '../../context/productContext'
@@ -18,7 +19,7 @@ export function AllProducts() {
     useContext(SearchContext)
 
   const { products, setProducts } = useContext(ProductsContext)
-  
+
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage] = useState(5)
 
@@ -48,9 +49,11 @@ export function AllProducts() {
   function fetchData() {
     fetch('/api/products')
       .then((response) => {
-        return response.json()})
+        return response.json()
+      })
       .then((json) => {
-        setProducts(json.products)})
+        setProducts(json.products)
+      })
   }
 
   useEffect(() => {
