@@ -18,7 +18,7 @@ export function AllProducts() {
     useContext(SearchContext)
 
   const { products, setProducts } = useContext(ProductsContext)
-
+  
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage] = useState(5)
 
@@ -30,8 +30,10 @@ export function AllProducts() {
   const currentPosts = products.slice(firstPostIndex, lastPostIndex)
 
   const filteredPosts = filteredList.slice(firstPostIndex, lastPostIndex)
+  const filteredPages = Math.ceil(filteredPosts.length / postsPerPage)
 
   const handleSearch = (searchTerm: string) => {
+    setCurrentPage(1)
     setFilteredList(
       products.filter((product: ProductInterface) =>
         product.name.toLowerCase().includes(searchTerm.toLowerCase()),
@@ -43,11 +45,17 @@ export function AllProducts() {
     handleSearch(searchTerm)
   }, [products, searchTerm])
 
-  useEffect(() => {
+  function fetchData() {
     fetch('/api/products')
-      .then((response) => response.json())
-      .then((json) => setProducts(json.products))
-  }, [products])
+      .then((response) => {
+        return response.json()})
+      .then((json) => {
+        setProducts(json.products)})
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   function RenderProduct() {
     return (
@@ -100,26 +108,54 @@ export function AllProducts() {
       <TitleAndNav>
         <h2>Todos os produtos</h2>
         <div>
-          <ArrowLeftIcon
-            onClick={() => currentPage !== 1 && setCurrentPage(currentPage - 1)}
-            width="20"
-            height="20"
-            style={
-              currentPage === 1 ? { opacity: 0.5, pointerEvents: 'none' } : {}
-            }
-          />
-          <ArrowRightIcon
-            onClick={() =>
-              currentPage !== maxPages && setCurrentPage(currentPage + 1)
-            }
-            width="20"
-            height="20"
-            style={
-              currentPage === maxPages
-                ? { opacity: 0.5, pointerEvents: 'none' }
-                : {}
-            }
-          />
+          {searchTerm ? (
+            <>
+              <ArrowLeftIcon
+                onClick={() => currentPage !== 1 && setCurrentPage(currentPage - 1)}
+                width="20"
+                height="20"
+                style={
+                  currentPage === 1 ? { opacity: 0.5, pointerEvents: 'none' } : {}
+                }
+              />
+              <ArrowRightIcon
+                onClick={() =>
+                  currentPage !== filteredPages && setCurrentPage(currentPage + 1)
+                }
+                width="20"
+                height="20"
+                style={
+                  currentPage === filteredPages
+                    ? { opacity: 0.5, pointerEvents: 'none' }
+                    : {}
+                }
+              />
+            </>
+          ) : (
+            <>
+              <ArrowLeftIcon
+                onClick={() => currentPage !== 1 && setCurrentPage(currentPage - 1)}
+                width="20"
+                height="20"
+                style={
+                  currentPage === 1 ? { opacity: 0.5, pointerEvents: 'none' } : {}
+                }
+              />
+              <ArrowRightIcon
+                onClick={() =>
+                  currentPage !== maxPages && setCurrentPage(currentPage + 1)
+                }
+                width="20"
+                height="20"
+                style={
+                  currentPage === maxPages
+                    ? { opacity: 0.5, pointerEvents: 'none' }
+                    : {}
+                }
+              />
+            </>
+          )}
+
         </div>
       </TitleAndNav>
 
@@ -170,9 +206,15 @@ export function AllProducts() {
           </ProductsBody>
         </Content>
         <Pagination>
-          <span>
-            Página {currentPage} de {maxPages}
-          </span>
+          {searchTerm ? (
+            <span>
+              Página {currentPage} de {filteredPages}
+            </span>
+          ) : (
+            <span>
+              Página {currentPage} de {maxPages}
+            </span>
+          )}
         </Pagination>
       </ContentContainer>
     </Container>

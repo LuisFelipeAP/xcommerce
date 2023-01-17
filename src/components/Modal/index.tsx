@@ -84,8 +84,18 @@ export function Modal() {
 
   const { setProducts } = useContext(ProductsContext)
 
-  async function createProduct() {
-    await fetch('/api/products', {
+  function fetchData() {
+    fetch('/api/products')
+      .then((response) => {
+        return response.json()
+      })
+      .then((json) => {
+        setProducts(json.products)
+      })
+  }
+
+  function createProduct() {
+    fetch('/api/products', {
       method: 'POST',
       body: JSON.stringify({
         name: newProductName,
@@ -99,6 +109,8 @@ export function Modal() {
       .then((json) => {
         setProducts(json.product)
       })
+
+    fetchData()
   }
 
   return (

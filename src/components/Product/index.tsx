@@ -174,12 +174,18 @@ export function ProductComponent({
             onClick={handleToggleFavorite}
             width={24}
             height={24}
+            style={{
+              cursor: 'pointer',
+            }}
           />
         ) : (
           <EmptyHeartIcon
             onClick={handleToggleFavorite}
             width={24}
             height={24}
+            style={{
+              cursor: 'pointer',
+            }}
           />
         )}
       </TDContainer>

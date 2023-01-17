@@ -10,59 +10,59 @@ export function makeServer() {
     seeds(server) {
       server.schema.products.create({
         name: 'Iphone 14',
-        price: 8000,
-        stock: 3,
         code: 'MLB123456',
+        price: 8000,
         sales: 30,
+        stock: 3,
       })
       server.schema.products.create({
         name: 'Kit 10 Un. Adesivo 3m Porta Cartão De Silicone Para Celular',
-        price: 31.67,
-        stock: 0,
         code: cuid.slug(),
+        price: 31.67,
         sales: 150,
+        stock: 0,
       })
       server.schema.products.create({
         name: 'Oneplus',
-        price: 2,
-        stock: 2,
         code: cuid.slug(),
+        price: 2,
         sales: 4,
+        stock: 2,
       })
       server.schema.products.create({
         name: 'Xiaomi',
-        price: 2,
-        stock: 2,
         code: cuid.slug(),
+        price: 2,
         sales: 4,
+        stock: 2,
       })
       server.schema.products.create({
         name: 'Samsung',
-        price: 2,
-        stock: 2,
         code: cuid.slug(),
+        price: 2,
         sales: 4,
+        stock: 2,
       })
       server.schema.products.create({
         name: 'Motorola',
-        price: 2,
-        stock: 2,
         code: cuid.slug(),
+        price: 2,
         sales: 4,
+        stock: 2,
       })
       server.schema.products.create({
         name: 'LG',
-        price: 2,
-        stock: 2,
         code: cuid.slug(),
+        price: 2,
         sales: 4,
+        stock: 2,
       })
       server.schema.products.create({
         name: 'Nokia',
-        price: 2,
-        stock: 2,
         code: cuid.slug(),
+        price: 2,
         sales: 4,
+        stock: 2,
       })
     },
 
