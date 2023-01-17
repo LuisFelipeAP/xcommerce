@@ -1,4 +1,3 @@
-import { violetA } from '@radix-ui/colors/types/dark/violetA'
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import { useContext, useEffect, useState } from 'react'
 import { ProductInterface, ProductsContext } from '../../context/productContext'
@@ -114,16 +113,21 @@ export function AllProducts() {
           {searchTerm ? (
             <>
               <ArrowLeftIcon
-                onClick={() => currentPage !== 1 && setCurrentPage(currentPage - 1)}
+                onClick={() =>
+                  currentPage !== 1 && setCurrentPage(currentPage - 1)
+                }
                 width="20"
                 height="20"
                 style={
-                  currentPage === 1 ? { opacity: 0.5, pointerEvents: 'none' } : {}
+                  currentPage === 1
+                    ? { opacity: 0.5, pointerEvents: 'none' }
+                    : {}
                 }
               />
               <ArrowRightIcon
                 onClick={() =>
-                  currentPage !== filteredPages && setCurrentPage(currentPage + 1)
+                  currentPage !== filteredPages &&
+                  setCurrentPage(currentPage + 1)
                 }
                 width="20"
                 height="20"
@@ -137,11 +141,15 @@ export function AllProducts() {
           ) : (
             <>
               <ArrowLeftIcon
-                onClick={() => currentPage !== 1 && setCurrentPage(currentPage - 1)}
+                onClick={() =>
+                  currentPage !== 1 && setCurrentPage(currentPage - 1)
+                }
                 width="20"
                 height="20"
                 style={
-                  currentPage === 1 ? { opacity: 0.5, pointerEvents: 'none' } : {}
+                  currentPage === 1
+                    ? { opacity: 0.5, pointerEvents: 'none' }
+                    : {}
                 }
               />
               <ArrowRightIcon
@@ -158,7 +166,6 @@ export function AllProducts() {
               />
             </>
           )}
-
         </div>
       </TitleAndNav>
 

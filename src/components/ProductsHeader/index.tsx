@@ -57,10 +57,10 @@ export function ProductsHeader() {
 
       <NavContainer>
         <MainNav>
-          <Button type='button' onClick={() => setShowFavorites(false)}>
+          <Button type="button" onClick={() => setShowFavorites(false)}>
             Todas
           </Button>
-          <Button type='button' onClick={() => setShowFavorites(true)}>
+          <Button type="button" onClick={() => setShowFavorites(true)}>
             Favoritos
           </Button>
         </MainNav>

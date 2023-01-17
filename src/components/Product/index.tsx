@@ -21,15 +21,13 @@ export function ProductComponent({
   })
 
   const { favorites, setFavorites } = useContext(ProductsContext)
-  const isFavorite = favorites.includes(code)
-  const favoriteProduct = favorites.find((product) => product.code === code);
+  const favoriteProduct = favorites.find((product) => product.code === code)
 
   function handleToggleFavorite() {
-
     if (favoriteProduct) {
-      setFavorites(favorites.filter((product) => product !== favoriteProduct));
+      setFavorites(favorites.filter((product) => product !== favoriteProduct))
     } else {
-      setFavorites([...favorites, { name, code, sales, price, stock }]);
+      setFavorites([...favorites, { name, code, sales, price, stock }])
     }
   }
 

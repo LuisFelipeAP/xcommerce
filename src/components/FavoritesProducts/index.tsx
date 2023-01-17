@@ -1,16 +1,24 @@
-import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
-import { useContext } from "react";
-import { ProductInterface, ProductsContext } from "../../context/productContext";
-import { ProductComponent } from "../Product";
-import { Container, Content, ContentContainer, NothingFavorited, Pagination, ProductsBody, TitleAndNav } from "./style";
+import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
+import { useContext } from 'react'
+import { ProductInterface, ProductsContext } from '../../context/productContext'
+import { ProductComponent } from '../Product'
+import {
+  Container,
+  Content,
+  ContentContainer,
+  NothingFavorited,
+  Pagination,
+  ProductsBody,
+  TitleAndNav,
+} from './style'
 
 export function FavoritesProducts() {
   const { favorites } = useContext(ProductsContext)
-  
+
   function RenderProduct() {
     return (
       <>
-        {favorites.length > 0 ?
+        {favorites.length > 0 ? (
           favorites.map((product: ProductInterface) => {
             return (
               <tr key={product.code}>
@@ -23,10 +31,12 @@ export function FavoritesProducts() {
                 />
               </tr>
             )
-          }) : 
+          })
+        ) : (
           <NothingFavorited>
             Nenhum produto favoritado. Favorite um produto!
-          </NothingFavorited>}
+          </NothingFavorited>
+        )}
       </>
     )
   }
@@ -36,14 +46,8 @@ export function FavoritesProducts() {
       <TitleAndNav>
         <h2>Produtos favoritos</h2>
         <div>
-          <ArrowLeftIcon
-            width="20"
-            height="20"
-          />
-          <ArrowRightIcon
-            width="20"
-            height="20"
-          />
+          <ArrowLeftIcon width="20" height="20" />
+          <ArrowRightIcon width="20" height="20" />
         </div>
       </TitleAndNav>
 
@@ -94,9 +98,7 @@ export function FavoritesProducts() {
           </ProductsBody>
         </Content>
         <Pagination>
-          <span>
-            Página 1 de 10
-          </span>
+          <span>Página 1 de 10</span>
         </Pagination>
       </ContentContainer>
     </Container>
