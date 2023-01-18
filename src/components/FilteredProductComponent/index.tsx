@@ -1,8 +1,13 @@
 import Image from 'next/image'
 import { Container, ImageContainer, InfoContainer } from './style'
 import ProductImage from '../../assets/product.jpg'
+import { ProductInterface } from '../../context/productContext'
 
-export function MostSoldProduct() {
+export function FilteredProductComponent({
+  name,
+  price,
+  sales,
+}: ProductInterface) {
   return (
     <Container>
       <ImageContainer>
@@ -10,11 +15,11 @@ export function MostSoldProduct() {
       </ImageContainer>
       <InfoContainer>
         <span>
-          R$ <strong>31,67</strong>
+          R$ <strong>{price}</strong>
         </span>
-        <span>203 vendas</span>
+        <span>{sales} vendas</span>
       </InfoContainer>
-      <h3>Kit 10 Un. Adesivo (...)</h3>
+      <h3>{name.length > 18 ? name.substring(0, 18) + ' (...)' : name}</h3>
     </Container>
   )
 }

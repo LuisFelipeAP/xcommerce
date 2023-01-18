@@ -2,7 +2,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import { useContext, useEffect, useState } from 'react'
 import { ProductInterface, ProductsContext } from '../../context/productContext'
 import { SearchContext } from '../../context/searchContext'
-import { ProductComponent } from '../Product'
+import { ProductComponent } from '../ProductComponent'
 import {
   Container,
   Content,

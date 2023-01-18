@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { ProductsContext } from '../../context/productContext'
 import { AllProducts } from '../AllProducts'
 import { FavoritesProducts } from '../FavoritesProducts'
-import { MostSold } from '../MostSold'
+import { FilterSection } from '../FilterSection'
 import { Container } from './style'
 
 export function Content() {
@@ -10,7 +10,7 @@ export function Content() {
 
   return (
     <Container>
-      <MostSold />
+      <FilterSection />
       {showFavorites ? <FavoritesProducts /> : <AllProducts />}
     </Container>
   )
