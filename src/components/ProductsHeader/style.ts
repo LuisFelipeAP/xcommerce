@@ -84,4 +84,13 @@ export const Button = styled(Toolbar.Button, {
   fontWeight: '400',
   fontSize: '16px',
   lineHeight: '20px',
+  transition: 'all 0.2s',
+
+  '&:hover': {
+    opacity: '0.8',
+  },
+
+  '&:active': {
+    transform: 'scale(0.90)'
+  }
 })

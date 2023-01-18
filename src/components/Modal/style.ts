@@ -56,6 +56,16 @@ export const Button = styled('button', {
   fontWeight: '400',
   fontSize: '16px',
   lineHeight: '20px',
+  cursor: 'pointer',
+  transition: 'all 0.2s',
+
+  '&:hover': {
+    opacity: '0.8',
+  },
+
+  '&:active': {
+    transform: 'scale(0.90)'
+  }
 })
 
 export const IconButton = styled('button', {

@@ -29,7 +29,12 @@ export const TitleAndNav = styled('div', {
 
       '&:hover': {
         cursor: 'pointer',
+        opacity: '0.8',
       },
+
+      '&:active': {
+        transform: 'scale(0.90)'
+      }
     },
   },
 })
@@ -79,12 +84,8 @@ export const ProductsBody = styled('table', {
     width: '815px',
     borderTop: '1px solid rgba(0, 0, 0, 0.1);',
     lineHeight: '0px',
-    margin: '21px 0 20px',
+    margin: '18px 0 18px',
     display: 'block',
-  },
-
-  'tbody tr': {
-    height: '126px',
   },
 })
 

@@ -16,7 +16,7 @@ import { SearchContext } from '../../context/searchContext'
 import { ProductsContext } from '../../context/productContext'
 
 export function ProductsHeader() {
-  const { setShowFavorites } = useContext(ProductsContext)
+  const { showFavorites, setShowFavorites } = useContext(ProductsContext)
   const { searchTerm, setSearchTerm } = useContext(SearchContext)
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,10 +57,26 @@ export function ProductsHeader() {
 
       <NavContainer>
         <MainNav>
-          <Button type="button" onClick={() => setShowFavorites(false)}>
+          <Button
+            type="button"
+            onClick={() => setShowFavorites(false)}
+            style={
+              !showFavorites 
+              ? { background: 'rgba(211, 40, 17, 0.5)' } 
+              : { cursor: 'pointer' }
+            }
+          >
             Todas
           </Button>
-          <Button type="button" onClick={() => setShowFavorites(true)}>
+          <Button
+            type="button"
+            onClick={() => setShowFavorites(true)}
+            style={
+              showFavorites 
+              ? { background: 'rgba(211, 40, 17, 0.5)' } 
+              : { cursor: 'pointer' }
+            }
+          >
             Favoritos
           </Button>
         </MainNav>

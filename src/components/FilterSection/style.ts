@@ -38,7 +38,12 @@ export const TitleAndNav = styled('div', {
 
       '&:hover': {
         cursor: 'pointer',
+        opacity: '0.8',
       },
+
+      '&:active': {
+        transform: 'scale(0.90)'
+      }
     },
   },
 })
