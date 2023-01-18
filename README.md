@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Teste - Xcommerce
 
-## Getting Started
+A ideia deste teste é avaliar suas capacidades de transformar design em código, seu zelo com o projeto, e sua capacidade técnica. Você deve realizar o teste com Next, todas outras techs são da sua escolha É recomendado usar miragejs para mockar as requests.
 
-First, run the development server:
+Design: https://www.figma.com/file/uxYxUUSeBc8IOX7Pw7e0QH/Teste---XCOMMERCE?node-id=0%3A1&t=vKzDmlfdeFPlRhD0-1
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Features obrigatórias:
+ - Exibir todos os produtos e os produtos mais vendidos
+ - Paginação
+ - Busca
+ - Poder favoritar um produto
+ - Alternar exibição entre favoritos e todos produtos
+ - Poder criar um novo produto por um modal
+ - Mostrar o faturamento do produto e quantos foram vendidos na tabela
+ - Atenção a experiência do usuário (ex: toasts de errors)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+O que seria um plus:
+ - Usar react query para cachear as requests
+ - Que os componentes sejam acessíveis. (Você poder usar libs como radixUi para te ajudar nisso)
+ - Poder ordenar os produtos
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Exemplo de um produto:
+{
+  name: "Iphone 14",
+  code: "MLB123456",
+  sales: 30,
+  price: 8000,
+  stock: 3
+}
