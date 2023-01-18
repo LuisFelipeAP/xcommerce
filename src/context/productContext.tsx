@@ -8,27 +8,32 @@ export interface ProductInterface {
   stock: number
 }
 
-export interface ProductsContextInterface {
+interface ProductsContextInterface {
   products: ProductInterface[]
-  setProducts: (newProducts: ProductInterface[]) => void
-  favorites: string[]
-  setFavorites: (newFavorites: string[]) => void
+  setProducts: React.Dispatch<React.SetStateAction<ProductInterface[]>>
+  favorites: ProductInterface[]
+  setFavorites: React.Dispatch<React.SetStateAction<ProductInterface[]>>
   showFavorites: boolean
-  setShowFavorites: (newValue: boolean) => void
+  setShowFavorites: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const ProductsContext = createContext<ProductsContextInterface>({
+const defaultValue: ProductsContextInterface = {
   products: [],
   setProducts: () => {},
   favorites: [],
   setFavorites: () => {},
   showFavorites: false,
   setShowFavorites: () => {},
-})
+}
 
-export const ProductsProvider = ({ children }: any) => {
+export const ProductsContext =
+  createContext<ProductsContextInterface>(defaultValue)
+
+export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [products, setProducts] = useState<ProductInterface[]>([])
-  const [favorites, setFavorites] = useState<string[]>([])
+  const [favorites, setFavorites] = useState<ProductInterface[]>([])
   const [showFavorites, setShowFavorites] = useState(false)
 
   return (

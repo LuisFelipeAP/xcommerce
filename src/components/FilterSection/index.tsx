@@ -20,7 +20,7 @@ export function FilterSection() {
     sortProducts(filterType)
   }, [filterType, products])
 
-  function sortProducts(filterType) {
+  function sortProducts(filterType: string) {
     const sortedProducts = [...products]
     switch (filterType) {
       case 'Mais caros':
@@ -41,7 +41,7 @@ export function FilterSection() {
     setFilteredProducts(sortedProducts)
   }
 
-  const handleFilterChange = (event) => {
+  const handleFilterChange = (event: any) => {
     setFilterType(event.target.value)
   }
 

@@ -31,11 +31,6 @@ export function FavoritesProducts() {
   const filteredPosts = filteredList.slice(firstPostIndex, lastPostIndex)
   const filteredPages = Math.ceil(filteredPosts.length / postsPerPage)
 
-  const shouldRenderNothingFavorited =
-    filteredList.length < 1 || (currentPosts.length < 1 && !searchTerm)
-  const productsToRender =
-    filteredList.length > 0 ? filteredPosts : currentPosts
-
   const handleSearch = (searchTerm: string) => {
     setCurrentPage(1)
     setFilteredList(
@@ -49,10 +44,15 @@ export function FavoritesProducts() {
     handleSearch(searchTerm)
   }, [favorites, searchTerm])
 
+  const shouldRenderNothing =
+    filteredList.length < 1 || (currentPosts.length < 1 && !searchTerm)
+  const productsToRender =
+    filteredList.length > 0 ? filteredPosts : currentPosts
+
   function RenderProduct() {
     return (
       <>
-        {shouldRenderNothingFavorited ? (
+        {shouldRenderNothing ? (
           <NothingFavorited>
             Nenhum produto favoritado. Favorite um produto!
           </NothingFavorited>
@@ -97,7 +97,7 @@ export function FavoritesProducts() {
             width="20"
             height="20"
             style={
-              currentPage === maxPages || shouldRenderNothingFavorited
+              currentPage === maxPages || shouldRenderNothing
                 ? { opacity: 0.5, pointerEvents: 'none' }
                 : {}
             }
