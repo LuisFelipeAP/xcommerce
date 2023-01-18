@@ -123,7 +123,10 @@ export function Modal() {
       </Dialog.Trigger>
       <Dialog.Portal>
         <DialogOverlay css={{ background: 'rgba(0, 0, 0, .5)' }} />
-        <DialogContent onPointerDownOutside={() => setIsModalOpen(false)} onEscapeKeyDown={() => setIsModalOpen(false)}>
+        <DialogContent
+          onPointerDownOutside={() => setIsModalOpen(false)}
+          onEscapeKeyDown={() => setIsModalOpen(false)}
+        >
           <DialogTitle>Novo produto</DialogTitle>
           <Fieldset>
             <Label htmlFor="name">Nome</Label>
