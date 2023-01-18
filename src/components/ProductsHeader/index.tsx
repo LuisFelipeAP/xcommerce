@@ -61,9 +61,9 @@ export function ProductsHeader() {
             type="button"
             onClick={() => setShowFavorites(false)}
             style={
-              !showFavorites 
-              ? { background: 'rgba(211, 40, 17, 0.5)' } 
-              : { cursor: 'pointer' }
+              !showFavorites
+                ? { background: 'rgba(211, 40, 17, 0.5)' }
+                : { cursor: 'pointer' }
             }
           >
             Todas
@@ -72,9 +72,9 @@ export function ProductsHeader() {
             type="button"
             onClick={() => setShowFavorites(true)}
             style={
-              showFavorites 
-              ? { background: 'rgba(211, 40, 17, 0.5)' } 
-              : { cursor: 'pointer' }
+              showFavorites
+                ? { background: 'rgba(211, 40, 17, 0.5)' }
+                : { cursor: 'pointer' }
             }
           >
             Favoritos

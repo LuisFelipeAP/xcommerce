@@ -64,8 +64,8 @@ export const Button = styled('button', {
   },
 
   '&:active': {
-    transform: 'scale(0.90)'
-  }
+    transform: 'scale(0.90)',
+  },
 })
 
 export const IconButton = styled('button', {

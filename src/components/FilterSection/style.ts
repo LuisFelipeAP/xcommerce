@@ -42,8 +42,8 @@ export const TitleAndNav = styled('div', {
       },
 
       '&:active': {
-        transform: 'scale(0.90)'
-      }
+        transform: 'scale(0.90)',
+      },
     },
   },
 })

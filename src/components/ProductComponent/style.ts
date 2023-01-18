@@ -6,14 +6,14 @@ export const ProductContainer = styled('div', {
 })
 
 export const TDContainer = styled('td', {
-  'svg': {
+  svg: {
     '&:hover': {
       cursor: 'pointer',
       opacity: '0.8',
     },
 
     '&:active': {
-      transform: 'scale(0.90)'
-    }
-  }
+      transform: 'scale(0.90)',
+    },
+  },
 })

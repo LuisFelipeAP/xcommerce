@@ -91,6 +91,6 @@ export const Button = styled(Toolbar.Button, {
   },
 
   '&:active': {
-    transform: 'scale(0.90)'
-  }
+    transform: 'scale(0.90)',
+  },
 })
