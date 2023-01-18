@@ -1,3 +1,4 @@
+import { NextSeo } from 'next-seo'
 import { Content } from '../../components/Content'
 import { Header } from '../../components/Header'
 import { ProductsHeader } from '../../components/ProductsHeader'
@@ -5,11 +6,15 @@ import { Container } from './styles'
 
 export default function Home() {
   return (
-    <Container>
-      <Header />
-      <ProductsHeader />
+    <>
+      <NextSeo title="Xcommerce" />
 
-      <Content />
-    </Container>
+      <Container>
+        <Header />
+        <ProductsHeader />
+
+        <Content />
+      </Container>
+    </>
   )
 }
