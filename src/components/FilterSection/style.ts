@@ -9,7 +9,7 @@ export const TitleAndNav = styled('div', {
   justifyContent: 'space-between',
   alignItems: 'center',
 
-  'select': {
+  select: {
     all: 'unset',
     appearance: 'auto',
     cursor: 'pointer',

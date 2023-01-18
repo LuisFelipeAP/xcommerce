@@ -216,7 +216,11 @@ export function AllProducts() {
           </ProductsBody>
         </Content>
         <Pagination>
-          {searchTerm ? (
+          {filteredList.length < 1 || currentPosts.length < 1 ? (
+            <span>
+              Página {currentPage} de {filteredPages || 1}
+            </span>
+          ) : searchTerm ? (
             <span>
               Página {currentPage} de {filteredPages}
             </span>

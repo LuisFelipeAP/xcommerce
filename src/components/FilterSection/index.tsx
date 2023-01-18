@@ -66,27 +66,26 @@ export function FilterSection() {
         </select>
 
         <div>
-          <ArrowLeftIcon onClick={() =>
-            currentPage !== 1 && setCurrentPage(currentPage - 1)
-          }
+          <ArrowLeftIcon
+            onClick={() => currentPage !== 1 && setCurrentPage(currentPage - 1)}
             width="20"
             height="20"
             style={
-              currentPage === 1
-                ? { opacity: 0.5, pointerEvents: 'none' }
-                : {}
-            } />
-          <ArrowRightIcon onClick={() =>
-            currentPage !== maxPages &&
-            setCurrentPage(currentPage + 1)
-          }
+              currentPage === 1 ? { opacity: 0.5, pointerEvents: 'none' } : {}
+            }
+          />
+          <ArrowRightIcon
+            onClick={() =>
+              currentPage !== maxPages && setCurrentPage(currentPage + 1)
+            }
             width="20"
             height="20"
             style={
               currentPage === maxPages
                 ? { opacity: 0.5, pointerEvents: 'none' }
                 : {}
-            } />
+            }
+          />
         </div>
       </TitleAndNav>
 

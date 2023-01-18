@@ -1,6 +1,7 @@
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ProductInterface, ProductsContext } from '../../context/productContext'
+import { SearchContext } from '../../context/searchContext'
 import { ProductComponent } from '../ProductComponent'
 import {
   Container,
@@ -14,28 +15,63 @@ import {
 
 export function FavoritesProducts() {
   const { favorites } = useContext(ProductsContext)
+  const { searchTerm, filteredList, setFilteredList } =
+    useContext(SearchContext)
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postsPerPage] = useState(5)
+
+  const maxPages = Math.ceil(favorites.length / postsPerPage)
+
+  const lastPostIndex = currentPage * postsPerPage
+  const firstPostIndex = lastPostIndex - postsPerPage
+
+  const currentPosts = favorites.slice(firstPostIndex, lastPostIndex)
+
+  const filteredPosts = filteredList.slice(firstPostIndex, lastPostIndex)
+  const filteredPages = Math.ceil(filteredPosts.length / postsPerPage)
+
+  const shouldRenderNothingFavorited =
+    filteredList.length < 1 || (currentPosts.length < 1 && !searchTerm)
+  const productsToRender =
+    filteredList.length > 0 ? filteredPosts : currentPosts
+
+  const handleSearch = (searchTerm: string) => {
+    setCurrentPage(1)
+    setFilteredList(
+      favorites.filter((favorite) =>
+        favorite.name.toLowerCase().includes(searchTerm.toLowerCase()),
+      ),
+    )
+  }
+
+  useEffect(() => {
+    handleSearch(searchTerm)
+  }, [favorites, searchTerm])
 
   function RenderProduct() {
     return (
       <>
-        {favorites.length > 0 ? (
-          favorites.map((product: ProductInterface) => {
-            return (
-              <tr key={product.code}>
-                <ProductComponent
-                  name={product.name}
-                  code={product.code}
-                  price={product.price}
-                  sales={product.sales}
-                  stock={product.stock}
-                />
-              </tr>
-            )
-          })
-        ) : (
+        {shouldRenderNothingFavorited ? (
           <NothingFavorited>
             Nenhum produto favoritado. Favorite um produto!
           </NothingFavorited>
+        ) : (
+          <>
+            {productsToRender.map((product: ProductInterface) => (
+              <>
+                <tr key={product.code}>
+                  <ProductComponent
+                    code={product.code}
+                    name={product.name}
+                    stock={product.stock}
+                    price={product.price}
+                    sales={product.sales}
+                  />
+                </tr>
+              </>
+            ))}
+          </>
         )}
       </>
     )
@@ -46,8 +82,26 @@ export function FavoritesProducts() {
       <TitleAndNav>
         <h2>Produtos favoritos</h2>
         <div>
-          <ArrowLeftIcon width="20" height="20" />
-          <ArrowRightIcon width="20" height="20" />
+          <ArrowLeftIcon
+            onClick={() => currentPage !== 1 && setCurrentPage(currentPage - 1)}
+            width="20"
+            height="20"
+            style={
+              currentPage === 1 ? { opacity: 0.5, pointerEvents: 'none' } : {}
+            }
+          />
+          <ArrowRightIcon
+            onClick={() =>
+              currentPage !== maxPages && setCurrentPage(currentPage + 1)
+            }
+            width="20"
+            height="20"
+            style={
+              currentPage === maxPages || shouldRenderNothingFavorited
+                ? { opacity: 0.5, pointerEvents: 'none' }
+                : {}
+            }
+          />
         </div>
       </TitleAndNav>
 
@@ -98,7 +152,19 @@ export function FavoritesProducts() {
           </ProductsBody>
         </Content>
         <Pagination>
-          <span>Página 1 de 10</span>
+          {filteredList.length < 1 || currentPosts.length < 1 ? (
+            <span>
+              Página {currentPage} de {filteredPages || 1}
+            </span>
+          ) : searchTerm ? (
+            <span>
+              Página {currentPage} de {filteredPages}
+            </span>
+          ) : (
+            <span>
+              Página {currentPage} de {maxPages}
+            </span>
+          )}
         </Pagination>
       </ContentContainer>
     </Container>
