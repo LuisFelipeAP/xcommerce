@@ -73,6 +73,8 @@ export function Modal() {
     resolver: zodResolver(registerProductSchema),
   })
 
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   const [newProductName, setNewProductName] =
     useState<registerNewProductName>('')
   const [newProductPrice, setNewProductPrice] =
@@ -111,16 +113,17 @@ export function Modal() {
       })
 
     fetchData()
+    setIsModalOpen(false)
   }
 
   return (
-    <Dialog.Root>
+    <Dialog.Root open={isModalOpen}>
       <Dialog.Trigger asChild>
-        <Button>Criar novo</Button>
+        <Button onClick={() => setIsModalOpen(true)}>Criar novo</Button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <DialogOverlay />
-        <DialogContent>
+        <DialogOverlay css={{ background: 'rgba(0, 0, 0, .5)' }} />
+        <DialogContent onPointerDownOutside={() => setIsModalOpen(false)} onEscapeKeyDown={() => setIsModalOpen(false)}>
           <DialogTitle>Novo produto</DialogTitle>
           <Fieldset>
             <Label htmlFor="name">Nome</Label>
@@ -184,7 +187,9 @@ export function Modal() {
           <Flex css={{ marginTop: 25, justifyContent: 'flex-end' }}>
             <Dialog.Close asChild>
               <Button
-                onClick={handleSubmit(createProduct)}
+                onClick={() => {
+                  handleSubmit(createProduct)()
+                }}
                 disabled={isSubmitting}
               >
                 Criar produto
@@ -193,7 +198,7 @@ export function Modal() {
           </Flex>
           <Dialog.Close asChild>
             <IconButton aria-label="Close">
-              <Cross2Icon />
+              <Cross2Icon onClick={() => setIsModalOpen(false)} />
             </IconButton>
           </Dialog.Close>
         </DialogContent>
