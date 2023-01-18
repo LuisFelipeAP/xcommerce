@@ -9,11 +9,20 @@ export const TitleAndNav = styled('div', {
   justifyContent: 'space-between',
   alignItems: 'center',
 
-  h2: {
+  'select': {
+    all: 'unset',
+    appearance: 'auto',
+    cursor: 'pointer',
+    width: 'auto',
+    overflow: 'hidden',
+    display: 'inline',
+    position: 'relative',
+    height: '30px',
+    border: 'none',
     fontFamily: 'Inter',
     fontStyle: 'normal',
     fontWeight: '600',
-    fontSize: '24px',
+    fontSize: 24,
     lineHeight: '125%',
     color: '#061237',
   },

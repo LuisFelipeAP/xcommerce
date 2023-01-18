@@ -45,6 +45,16 @@ export function FilterSection() {
     setFilterType(event.target.value)
   }
 
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postsPerPage] = useState(6)
+
+  const maxPages = Math.ceil(filteredProducts.length / postsPerPage)
+
+  const lastPostIndex = currentPage * postsPerPage
+  const firstPostIndex = lastPostIndex - postsPerPage
+
+  const currentPosts = filteredProducts.slice(firstPostIndex, lastPostIndex)
+
   return (
     <Container>
       <TitleAndNav>
@@ -56,19 +66,40 @@ export function FilterSection() {
         </select>
 
         <div>
-          <ArrowLeftIcon width="20" height="20" />
-          <ArrowRightIcon width="20" height="20" />
+          <ArrowLeftIcon onClick={() =>
+            currentPage !== 1 && setCurrentPage(currentPage - 1)
+          }
+            width="20"
+            height="20"
+            style={
+              currentPage === 1
+                ? { opacity: 0.5, pointerEvents: 'none' }
+                : {}
+            } />
+          <ArrowRightIcon onClick={() =>
+            currentPage !== maxPages &&
+            setCurrentPage(currentPage + 1)
+          }
+            width="20"
+            height="20"
+            style={
+              currentPage === maxPages
+                ? { opacity: 0.5, pointerEvents: 'none' }
+                : {}
+            } />
         </div>
       </TitleAndNav>
 
       <ContentContainer>
         <Content>
-          {filteredProducts.map((product) => (
+          {currentPosts.map((product) => (
             <FilteredProductComponent key={product.code} {...product} />
           ))}
         </Content>
         <Pagination>
-          <span>Página 1 de 10</span>
+          <span>
+            Página {currentPage} de {maxPages}
+          </span>
         </Pagination>
       </ContentContainer>
     </Container>
