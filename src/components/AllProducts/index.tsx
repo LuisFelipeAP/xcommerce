@@ -2,6 +2,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import { useContext, useEffect, useState } from 'react'
 import { ProductInterface, ProductsContext } from '../../context/productContext'
 import { SearchContext } from '../../context/searchContext'
+import { MobileProducts } from '../MobileProducts'
 import { ProductComponent } from '../ProductComponent'
 import {
   Container,
@@ -10,6 +11,7 @@ import {
   NothingRegistered,
   Pagination,
   ProductsBody,
+  ProductsMobile,
   TitleAndNav,
 } from './style'
 
@@ -105,6 +107,34 @@ export function AllProducts() {
     )
   }
 
+  function RenderMobileProduct() {
+    return (
+      <>
+        {filteredList && (
+          <>
+            {filteredList.map((product: ProductInterface) => (
+              <div key={product.code}>
+                <MobileProducts
+                  code={product.code}
+                  name={product.name}
+                  stock={product.stock}
+                  price={product.price}
+                  sales={product.sales}
+                />
+              </div>
+            ))}
+          </>
+        )}
+        {filteredList.length > 0 ||
+          (currentPosts.length > 0 && (
+            <NothingRegistered>
+              Nenhum produto encontrado. Cadastre um novo produto!
+            </NothingRegistered>
+          ))}
+      </>
+    )
+  }
+
   return (
     <Container>
       <TitleAndNav>
@@ -171,6 +201,9 @@ export function AllProducts() {
 
       <ContentContainer>
         <Content>
+          <ProductsMobile>
+            <RenderMobileProduct />
+          </ProductsMobile>
           <ProductsBody>
             <thead>
               <tr>

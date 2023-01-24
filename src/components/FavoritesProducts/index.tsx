@@ -2,6 +2,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import { useContext, useEffect, useState } from 'react'
 import { ProductInterface, ProductsContext } from '../../context/productContext'
 import { SearchContext } from '../../context/searchContext'
+import { MobileProducts } from '../MobileProducts'
 import { ProductComponent } from '../ProductComponent'
 import {
   Container,
@@ -10,6 +11,7 @@ import {
   NothingFavorited,
   Pagination,
   ProductsBody,
+  ProductsMobile,
   TitleAndNav,
 } from './style'
 
@@ -60,8 +62,36 @@ export function FavoritesProducts() {
           <>
             {productsToRender.map((product: ProductInterface) => (
               <>
-                <tr key={product.code}>
+                <div key={product.code}>
                   <ProductComponent
+                    code={product.code}
+                    name={product.name}
+                    stock={product.stock}
+                    price={product.price}
+                    sales={product.sales}
+                  />
+                </div>
+              </>
+            ))}
+          </>
+        )}
+      </>
+    )
+  }
+
+  function RenderMobileProduct() {
+    return (
+      <>
+        {shouldRenderNothing ? (
+          <NothingFavorited>
+            Nenhum produto favoritado. Favorite um produto!
+          </NothingFavorited>
+        ) : (
+          <>
+            {productsToRender.map((product: ProductInterface) => (
+              <>
+                <tr key={product.code}>
+                  <MobileProducts
                     code={product.code}
                     name={product.name}
                     stock={product.stock}
@@ -107,6 +137,9 @@ export function FavoritesProducts() {
 
       <ContentContainer>
         <Content>
+          <ProductsMobile>
+            <RenderMobileProduct />
+          </ProductsMobile>
           <ProductsBody>
             <thead>
               <tr>

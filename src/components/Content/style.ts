@@ -5,4 +5,9 @@ export const Container = styled('div', {
   display: 'flex',
   gap: '28.17px',
   backgroundColor: '#FAFAFA',
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    padding: '30px 20px',
+    flexDirection: 'column-reverse',
+  },
 })

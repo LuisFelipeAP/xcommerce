@@ -11,6 +11,11 @@ export const Container = styled('div', {
     lineHeight: '135%',
     color: '#235EE7',
   },
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    width: 'calc(100% / 4)',
+    textAlign: 'center',
+  },
 })
 
 export const ImageContainer = styled('div', {
@@ -24,6 +29,15 @@ export const ImageContainer = styled('div', {
 
   img: {
     background: 'rgba(0, 0, 0, 0.1)',
+  },
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    height: '70px',
+
+    img: {
+      width: '56px',
+      height: '36px',
+    },
   },
 })
 
@@ -39,5 +53,10 @@ export const InfoContainer = styled('div', {
     fontWeight: '400',
     fontSize: '14px',
     lineHeight: '135%',
+  },
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    flexDirection: 'column',
+    paddintTop: '10px',
   },
 })

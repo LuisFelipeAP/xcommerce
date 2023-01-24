@@ -14,6 +14,11 @@ export const LabelAndSearchBar = styled('div', {
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    flexDirection: 'column',
+    padding: '30px 20px'
+  },
 })
 
 export const PageLabel = styled('h2', {
@@ -37,6 +42,11 @@ export const SearchField = styled(Label.Root, {
     color: '#99A0B080',
     margin: '16px 23px',
   },
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    width: '100%',
+    marginTop: '20px',
+  }
 })
 
 export const Input = styled('input', {
@@ -63,6 +73,10 @@ export const NavContainer = styled(Toolbar.Root, {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    padding: '30px 20px'
+  },
 })
 
 export const MainNav = styled('div', {
