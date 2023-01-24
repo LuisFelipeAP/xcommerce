@@ -40,14 +40,13 @@ export const TitleAndNav = styled('div', {
         transform: 'scale(0.90)',
       },
     },
-    
+
     '@media(min-width: 320px) and (max-width: 480px)': {
       svg: {
         display: 'none',
       },
     },
   },
-
 })
 
 export const ContentContainer = styled('div', {
@@ -128,12 +127,11 @@ export const NothingFavorited = styled('div', {
 
 export const ProductsMobile = styled('div', {
   display: 'none',
-  
+
   '@media(min-width: 320px) and (max-width: 480px)': {
     display: 'flex',
     flexDirection: 'row',
     overflowX: 'auto',
     gap: '10px',
-
   },
 })

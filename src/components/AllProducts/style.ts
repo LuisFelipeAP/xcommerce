@@ -43,9 +43,9 @@ export const TitleAndNav = styled('div', {
   },
 
   '@media(min-width: 320px) and (max-width: 480px)': {
-    'div': {
+    div: {
       display: 'none',
-    }
+    },
   },
 })
 
@@ -88,13 +88,12 @@ export const Pagination = styled('div', {
 
 export const ProductsMobile = styled('div', {
   display: 'none',
-  
+
   '@media(min-width: 320px) and (max-width: 480px)': {
     display: 'flex',
     flexDirection: 'row',
     overflowX: 'auto',
     gap: '10px',
-
   },
 })
 

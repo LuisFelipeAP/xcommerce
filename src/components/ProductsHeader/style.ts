@@ -17,7 +17,7 @@ export const LabelAndSearchBar = styled('div', {
 
   '@media(min-width: 320px) and (max-width: 480px)': {
     flexDirection: 'column',
-    padding: '30px 20px'
+    padding: '30px 20px',
   },
 })
 
@@ -46,7 +46,7 @@ export const SearchField = styled(Label.Root, {
   '@media(min-width: 320px) and (max-width: 480px)': {
     width: '100%',
     marginTop: '20px',
-  }
+  },
 })
 
 export const Input = styled('input', {
@@ -75,7 +75,7 @@ export const NavContainer = styled(Toolbar.Root, {
   justifyContent: 'space-between',
 
   '@media(min-width: 320px) and (max-width: 480px)': {
-    padding: '30px 20px'
+    padding: '30px 20px',
   },
 })
 
