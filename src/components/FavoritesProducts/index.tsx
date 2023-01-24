@@ -62,7 +62,7 @@ export function FavoritesProducts() {
           <>
             {productsToRender.map((product: ProductInterface) => (
               <>
-                <div key={product.code}>
+                <tr key={product.code}>
                   <ProductComponent
                     code={product.code}
                     name={product.name}
@@ -70,7 +70,7 @@ export function FavoritesProducts() {
                     price={product.price}
                     sales={product.sales}
                   />
-                </div>
+                </tr>
               </>
             ))}
           </>
@@ -90,7 +90,7 @@ export function FavoritesProducts() {
           <>
             {productsToRender.map((product: ProductInterface) => (
               <>
-                <tr key={product.code}>
+                <div key={product.code}>
                   <MobileProducts
                     code={product.code}
                     name={product.name}
@@ -98,7 +98,7 @@ export function FavoritesProducts() {
                     price={product.price}
                     sales={product.sales}
                   />
-                </tr>
+                </div>
               </>
             ))}
           </>
