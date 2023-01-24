@@ -2,6 +2,10 @@ import { styled } from '@stitches/react'
 
 export const Container = styled('div', {
   width: '883px',
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    width: '100%',
+  },
 })
 
 export const TitleAndNav = styled('div', {
@@ -36,11 +40,22 @@ export const TitleAndNav = styled('div', {
         transform: 'scale(0.90)',
       },
     },
+    
+    '@media(min-width: 320px) and (max-width: 480px)': {
+      svg: {
+        display: 'none',
+      },
+    },
   },
+
 })
 
 export const ContentContainer = styled('div', {
   paddingTop: '34px',
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    paddingTop: '20px',
+  },
 })
 
 export const Content = styled('div', {
@@ -50,6 +65,10 @@ export const Content = styled('div', {
   gap: '31px',
   background: '#F3F5F9',
   borderRadius: '8px',
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    padding: '10px',
+  },
 })
 
 export const Pagination = styled('div', {
@@ -62,6 +81,10 @@ export const Pagination = styled('div', {
   lineHeight: '17px',
   color: '#636363',
   marginTop: '10px',
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    display: 'none',
+  },
 })
 
 export const ProductsBody = styled('table', {
@@ -87,6 +110,10 @@ export const ProductsBody = styled('table', {
     margin: '18px 0 18px',
     display: 'block',
   },
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    display: 'none',
+  },
 })
 
 export const NothingFavorited = styled('div', {
@@ -97,4 +124,16 @@ export const NothingFavorited = styled('div', {
   lineHeight: '17px',
   color: '#636363',
   marginTop: '40px',
+})
+
+export const ProductsMobile = styled('div', {
+  display: 'none',
+  
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    display: 'flex',
+    flexDirection: 'row',
+    overflowX: 'auto',
+    gap: '10px',
+
+  },
 })

@@ -32,6 +32,11 @@ export const DialogContent = styled(Dialog.Content, {
   padding: 20,
 
   '&:focus': { outline: 'none' },
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    width: '82%',
+    maxWidth: '90%',
+  },
 })
 
 export const DialogTitle = styled(Dialog.Title, {
@@ -96,6 +101,10 @@ export const Fieldset = styled('fieldset', {
   borderRadius: '8px',
   backgroundColor: 'white',
   flexWrap: 'wrap',
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    gap: '5px',
+  },
 })
 
 export const Label = styled('label', {
@@ -136,4 +145,9 @@ export const FormError = styled('p', {
   marginLeft: '80px',
   marginTop: '-5px',
   flexBasis: '100%',
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    marginLeft: '0',
+    marginTop: '10px',
+  },
 })

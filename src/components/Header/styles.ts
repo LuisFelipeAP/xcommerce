@@ -10,6 +10,10 @@ export const Container = styled('div', {
   img: {
     alignSelf: 'center',
   },
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    padding: '30px 20px',
+  },
 })
 
 export const AvatarLabelGroup = styled('div', {

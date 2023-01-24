@@ -2,6 +2,10 @@ import { styled } from '@stitches/react'
 
 export const Container = styled('div', {
   width: '427px',
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    width: '100%',
+  },
 })
 
 export const TitleAndNav = styled('div', {
@@ -50,6 +54,10 @@ export const TitleAndNav = styled('div', {
 
 export const ContentContainer = styled('div', {
   paddingTop: '34px',
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    paddingTop: '20px',
+  },
 })
 
 export const Content = styled('div', {
@@ -60,6 +68,11 @@ export const Content = styled('div', {
   gap: '21.36px 31px',
   background: '#F3F5F9',
   borderRadius: '8px',
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    padding: '10px',
+    justifyContent: 'center',
+  },
 })
 
 export const Pagination = styled('div', {
