@@ -123,6 +123,10 @@ export const NothingFavorited = styled('div', {
   lineHeight: '17px',
   color: '#636363',
   marginTop: '40px',
+
+  '@media(min-width: 320px) and (max-width: 480px)': {
+    margin: '20px 0',
+  },
 })
 
 export const ProductsMobile = styled('div', {

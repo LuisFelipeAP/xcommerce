@@ -103,7 +103,7 @@ export const Fieldset = styled('fieldset', {
   flexWrap: 'wrap',
 
   '@media(min-width: 320px) and (max-width: 480px)': {
-    gap: '5px',
+    gap: '10px',
   },
 })
 

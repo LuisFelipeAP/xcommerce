@@ -63,7 +63,7 @@ export const SeparatorRoot = styled(Separator.Root, {
   backgroundColor: 'rgba(255, 255, 255, 0.1)',
 
   '&[data-orientation=horizontal]': {
-    width: 'calc(100% - 100px)',
+    width: 'calc(100% - 40px)',
     height: 1,
   },
 })
