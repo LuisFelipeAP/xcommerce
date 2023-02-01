@@ -2,7 +2,7 @@
 
 A ideia deste teste é avaliar suas capacidades de transformar design em código, seu zelo com o projeto, e sua capacidade técnica. Você deve realizar o teste com Next, todas outras techs são da sua escolha É recomendado usar miragejs para mockar as requests.
 
-Design: https://www.figma.com/file/uxYxUUSeBc8IOX7Pw7e0QH/Teste---XCOMMERCE?node-id=0%3A1&t=vKzDmlfdeFPlRhD0-1
+Design: https://www.figma.com/file/mHpKn8Mja1F1sFFXI7lioX/Teste---XCOMMERCE-(Copy)?node-id=0%3A1&t=icW39LQBHClpvkAR-0
 
 ---
 
